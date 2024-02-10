@@ -36,13 +36,22 @@ p {
   margin: 24px;
 }
 
-header .logo-container {
+header {
   display: flex;
   justify-content: center;
 }
-header .logo-container .logo {
+header .logo {
   width: 197px;
   height: 36px;
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */
