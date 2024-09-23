@@ -1,46 +1,4 @@
-:root {
-  --light-gray: #F6F6F6;
-  --shadow-gray: #353535;
-  --gray: #EAEAEA;
-  --primary: #9356DC;
-  --secondary: #FF79DA;
-  --tertiary: #99E2D0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-}
-
-h1 {
-  font-family: 'Shrikhand', cursive;
-  font-size: 20px;
-}
-
-h2 {
-  font-weight: 700;
-  font-size: 24px;
-}
-
-h3 {
-  font-weight: 700;
-  font-size: 18px;
-}
-
-h4 {
-  font-weight: 300;
-  font-size: 18px;
-}
-
-p {
-  font-weight: 500;
-  font-size: 16px;
-}
-
+@import url("../main.css");
 
 .main-container {
   min-width: 375px;
@@ -50,12 +8,8 @@ p {
 header {
   display: flex;
   justify-content: center;
-  padding-bottom: 10px;
-
-  .logo {
-    width: 197px;
-    height: 36px;
-  }
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .location {
@@ -67,21 +21,19 @@ header {
   align-items: center;
   background-color: var(--gray);
   box-shadow: 0 4px 6px -6px black;
-  margin-left: -24px; /* Annule le margin du main-container sur le côté gauche */
+  margin-left: -24px;
+  /* Annule le margin du main-container sur le côté gauche */
   margin-right: -24px;
 }
 
 .introduction {
   display: flex;
   flex-direction: column;
-  margin-left: -24px; /* Annule le margin du main-container sur le côté gauche */
-  margin-right: -24px;
   background-color: var(--light-gray);
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding-top: 24px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 
   h2 {
     width: 275px;
@@ -104,7 +56,14 @@ header {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 24px 0;
+  padding: 24px 20px;
+  justify-content: center;
+
+  h2 {
+    margin: 0;
+    padding-top: 16px;
+    padding-bottom: 8px;
+  }
 
   .functionality {
     background-color: var(--light-gray);
@@ -117,6 +76,26 @@ header {
     margin-left: 10px;
     padding: 15px 0;
     padding-left: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    .number {
+      display: flex;
+      position: relative;
+      width: 24px;
+      height: 24px;
+      left: -34px;
+      background-color: var(--primary);
+      padding: 10px;
+      border-radius: 50%;
+      color: white;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .fa-solid {
+      color: var(--shadow-gray);
+    }
 
     .fa-store {
       color: var(--primary);
@@ -126,10 +105,13 @@ header {
 
 .restaurants {
   background-color: var(--light-gray);
-  margin-left: -24px; /* Annule le margin du main-container sur le côté gauche */
-  margin-right: -24px;
-  padding: 24px;
-  margin-bottom: 30px;
+  padding: 68px 24px;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 20px;
+  }
 }
 
 .cards-restaurant {
@@ -167,7 +149,8 @@ header {
         gap: 5px;
       }
 
-      .text-description h3, .text-description h4 {
+      .text-description h3,
+      .text-description h4 {
         margin: 0;
       }
 
@@ -187,48 +170,6 @@ header {
   }
 }
 
-footer {
-  color: white;
-  background-color: var(--shadow-gray);
-  margin-left: -24px; /* Annule le margin du main-container sur le côté gauche */
-  margin-right: -24px;
-  padding: 24px;
-  padding-bottom: 40px;
-
-  h1 {
-    margin-bottom: 20px;
-  }
-
-  .footer-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    p {
-      margin: 0;
-    }
-  }
-}
-
-.restaurants-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-
-  i {
-    position: absolute;
-    left: 20px;
-  }
-}
-
 main {
   width: 100%;
-}
-
-.restaurant-banner img{
-  width: 100%;
-  height: 300px;
 }
