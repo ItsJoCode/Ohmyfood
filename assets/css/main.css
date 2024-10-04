@@ -47,6 +47,8 @@ p {
 }
 
 footer {
+  display: flex;
+  flex-direction: column;
   color: white;
   background-color: var(--shadow-gray);
   padding: 24px;
@@ -58,6 +60,10 @@ footer h1 {
   margin-bottom: 20px;
 }
 
+footer i {
+  margin-right: 8px;
+}
+
 footer .footer-list {
   display: flex;
   flex-direction: column;
@@ -66,4 +72,23 @@ footer .footer-list {
 
 footer .footer-list p {
   margin: 0;
+}
+
+@media (min-width: 768px) {
+  footer {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 80px;
+    padding: 0 40px;
+    padding-top: 20px;
+  }
+
+  footer h1 {
+    margin: 0;
+  }
+
+  footer .footer-list {
+    flex-direction: row;
+    gap: 20px;
+  }
 }

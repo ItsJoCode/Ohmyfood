@@ -23,7 +23,6 @@ header {
   box-shadow: 0 4px 6px -6px black;
   margin-left: -24px;
   /* Annule le margin du main-container sur le côté gauche */
-  margin-right: -24px;
 }
 
 .introduction {
@@ -49,17 +48,20 @@ header {
   padding: 20px;
 }
 
+.functionment-section {
+  padding: 24px 20px;
+}
+.functionment-section h2 {
+  margin: 0;
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+
 .functionment {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 24px 20px;
   justify-content: center;
-}
-.functionment h2 {
-  margin: 0;
-  padding-top: 16px;
-  padding-bottom: 8px;
 }
 .functionment .functionality {
   background-color: var(--light-gray);
@@ -155,4 +157,30 @@ header {
 
 main {
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  header {
+    margin: 16px;
+  }
+  .introduction h2 {
+    width: auto;
+  }
+  .introduction h4 {
+    width: auto;
+  }
+  .functionment-section {
+    padding: 24px 220px;
+  }
+  .functionment {
+    flex-direction: row;
+  }
+  .restaurants {
+    background-color: var(--light-gray);
+    padding: 68px 220px;
+  }
+  .restaurants .cards-restaurant {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }/*# sourceMappingURL=style.css.map */
