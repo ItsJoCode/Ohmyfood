@@ -87,12 +87,102 @@ main {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    /* Masque tout ce qui dépasse de la div parente */
+  }
+
+  /* Conteneur pour le texte et la description */
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 
   .pricing {
-    margin-top: 10px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Pour aligner correctement le prix */
+  .price {
+    white-space: nowrap;
+    /* Évite que le prix ne se déplace sur une nouvelle ligne */
+    margin-left: auto;
+    /* Pousse le prix à l'extrême droite */
+    transition: margin-right 0.3s ease;
+  }
+
+  /* Le checkmark qui occupe toute la hauteur et avec les bords arrondis */
+  .checkmark-circle {
+    background-color: var(--tertiary);
+    /* Couleur verte */
+    width: 64px;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    right: -64px;
+    /* Initialement placé en dehors de la carte, mais limité à la largeur */
+    top: 0;
+    opacity: 0;
+    transition: right 0.5s ease, opacity 0.5s ease;
+    /* Animation pour le glissement */
+  }
+
+  .circle {
+    background-color: white;
+    /* Fond blanc pour le cercle */
+    border-radius: 50%;
+    width: 20px;
+    /* Taille du cercle */
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .circle i {
+    color: var(--tertiary);
+    /* Couleur de l'icône verte */
+    font-size: 12px;
+    /* Taille de l'icône */
+  }
+
+  /* L'animation lors du survol */
+  // .plate:hover {
+  //   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  //   transform: translateY(-5px);
+  // }
+
+  /* Faire entrer le carré au survol */
+  .plate:hover .checkmark-circle {
+    opacity: 1;
+    right: 0;
+    /* Le fait coulisser vers la gauche pour entrer */
+  }
+
+  /* Faire disparaitre le carré lorsqu'il n'y a plus de survol */
+  .plate:not(:hover) .checkmark-circle {
+    right: -64px;
+    /* Coulisse vers la droite pour disparaître */
+    opacity: 0;
+    /* Disparition en douceur */
+  }
+
+  /* Légère modification de la marge à gauche du prix au survol */
+  .plate:hover .price {
+    margin-right: 58px;
+    /* Décalage suffisant pour laisser place au checkmark */
   }
 }
 
@@ -101,8 +191,111 @@ button {
   background: linear-gradient(var(--secondary), var(--primary));
   border-radius: 50px;
   border: none;
-  padding: 20px 50px;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  /* Ombre légère en bas */
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
+  /* Transition douce pour le survol */
 }
+
+button:hover {
+  filter: brightness(1.1);
+  /* Augmente la luminosité de 10% au survol */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+  /* Ombre plus visible au survol */
+}
+
+/* Animation fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    /* Légère translation vers le bas */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section Entrées */
+.section:nth-child(1) {
+  animation: fadeIn 1s ease forwards;
+  /* Animation d'apparition */
+  animation-delay: 0.5s;
+  /* Délai avant l'apparition des entrées */
+  opacity: 0;
+  /* Assurer que les sections sont invisibles au départ */
+}
+
+/* Section Plats */
+.section:nth-child(2) {
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1.5s;
+  /* Délai avant l'apparition des plats */
+  opacity: 0;
+}
+
+/* Section Desserts */
+.section:nth-child(3) {
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 2.5s;
+  /* Délai avant l'apparition des desserts */
+  opacity: 0;
+}
+
+// /* Pour chaque plat à l'intérieur d'une section */
+
+// /* Animation pour les entrées */
+// .section:nth-child(1) .plate:nth-child(1) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 0.6s;
+// }
+
+// .section:nth-child(1) .plate:nth-child(2) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 0.8s;
+// }
+
+// .section:nth-child(1) .plate:nth-child(3) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 1s;
+// }
+
+// /* Animation pour les plats */
+// .section:nth-child(2) .plate:nth-child(1) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 1.6s;
+// }
+
+// .section:nth-child(2) .plate:nth-child(2) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 1.8s;
+// }
+
+// .section:nth-child(2) .plate:nth-child(3) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 2s;
+// }
+
+// /* Animation pour les desserts */
+// .section:nth-child(3) .plate:nth-child(1) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 2.6s;
+// }
+
+// .section:nth-child(3) .plate:nth-child(2) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 2.8s;
+// }
+
+// .section:nth-child(3) .plate:nth-child(3) {
+//   animation: fadeIn 0.7s ease forwards;
+//   animation-delay: 3s;
+// }
+
 
 @media (min-width: 768px) {
   .restaurant-header {

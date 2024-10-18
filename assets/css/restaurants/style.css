@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("../main.css");
 .restaurant-header {
   display: flex;
@@ -56,6 +57,13 @@ main {
   flex-direction: column;
   gap: 40px;
   margin-bottom: 30px;
+  /* Conteneur pour le texte et la description */
+  /* Pour aligner correctement le prix */
+  /* Le checkmark qui occupe toute la hauteur et avec les bords arrondis */
+  /* L'animation lors du survol */
+  /* Faire entrer le carré au survol */
+  /* Faire disparaitre le carré lorsqu'il n'y a plus de survol */
+  /* Légère modification de la marge à gauche du prix au survol */
 }
 .menu-sections .section {
   display: flex;
@@ -79,11 +87,81 @@ main {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.menu-sections .pricing {
-  margin-top: 10px;
+  position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  /* Masque tout ce qui dépasse de la div parente */
+}
+.menu-sections .text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.menu-sections .pricing {
+  display: flex;
+  align-items: center;
+}
+.menu-sections .price {
+  white-space: nowrap;
+  /* Évite que le prix ne se déplace sur une nouvelle ligne */
+  margin-left: auto;
+  /* Pousse le prix à l'extrême droite */
+  transition: margin-right 0.3s ease;
+}
+.menu-sections .checkmark-circle {
+  background-color: var(--tertiary);
+  /* Couleur verte */
+  width: 64px;
+  height: 100%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  right: -64px;
+  /* Initialement placé en dehors de la carte, mais limité à la largeur */
+  top: 0;
+  opacity: 0;
+  transition: right 0.5s ease, opacity 0.5s ease;
+  /* Animation pour le glissement */
+}
+.menu-sections .circle {
+  background-color: white;
+  /* Fond blanc pour le cercle */
+  border-radius: 50%;
+  width: 20px;
+  /* Taille du cercle */
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-sections .circle i {
+  color: var(--tertiary);
+  /* Couleur de l'icône verte */
+  font-size: 12px;
+  /* Taille de l'icône */
+}
+.menu-sections .plate:hover .checkmark-circle {
+  opacity: 1;
+  right: 0;
+  /* Le fait coulisser vers la gauche pour entrer */
+}
+.menu-sections .plate:not(:hover) .checkmark-circle {
+  right: -64px;
+  /* Coulisse vers la droite pour disparaître */
+  opacity: 0;
+  /* Disparition en douceur */
+}
+.menu-sections .plate:hover .price {
+  margin-right: 58px;
+  /* Décalage suffisant pour laisser place au checkmark */
 }
 
 button {
@@ -91,7 +169,57 @@ button {
   background: linear-gradient(var(--secondary), var(--primary));
   border-radius: 50px;
   border: none;
-  padding: 20px 50px;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  /* Ombre légère en bas */
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
+  /* Transition douce pour le survol */
+}
+
+button:hover {
+  filter: brightness(1.1);
+  /* Augmente la luminosité de 10% au survol */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+  /* Ombre plus visible au survol */
+}
+
+/* Animation fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    /* Légère translation vers le bas */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Section Entrées */
+.section:nth-child(1) {
+  animation: fadeIn 1s ease forwards;
+  /* Animation d'apparition */
+  animation-delay: 0.5s;
+  /* Délai avant l'apparition des entrées */
+  opacity: 0;
+  /* Assurer que les sections sont invisibles au départ */
+}
+
+/* Section Plats */
+.section:nth-child(2) {
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1.5s;
+  /* Délai avant l'apparition des plats */
+  opacity: 0;
+}
+
+/* Section Desserts */
+.section:nth-child(3) {
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 2.5s;
+  /* Délai avant l'apparition des desserts */
+  opacity: 0;
 }
 
 @media (min-width: 768px) {

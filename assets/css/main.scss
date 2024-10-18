@@ -1,4 +1,3 @@
-@charset "UTF-8";
 :root {
   --light-gray: #F6F6F6;
   --shadow-gray: #353535;
@@ -14,11 +13,11 @@
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
-  font-family: "Shrikhand", cursive;
+  font-family: 'Shrikhand', cursive;
   font-size: 28px;
 }
 
@@ -77,6 +76,7 @@ footer .footer-list p {
 
 .color-heart,
 .fa-heart:hover {
+  background: -webkit-linear-gradient(var(--primary), var(--secondary));
   background: linear-gradient(var(--primary), var(--secondary));
   -webkit-background-clip: text;
   background-clip: text;
@@ -124,31 +124,51 @@ footer .footer-list p {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 /* Animation pour faire disparaître le loader */
 @keyframes fadeOutLoader {
   0% {
     opacity: 1;
   }
+
   80% {
     opacity: 1;
   }
+
   /* Reste visible pendant 2.4 secondes (80% de 3s) */
   100% {
     opacity: 0;
     visibility: hidden;
   }
 }
+
 /* Optionnel : masquer les éléments jusqu'à la disparition du loader */
+// body {
+//   overflow: hidden;
+//   /* Empêche le défilement pendant le chargement */
+// }
+
+// body::after {
+//   content: '';
+//   display: block;
+//   visibility: hidden;
+//   animation: showContent 3s ease forwards;
+//   /* Montre le contenu après 3s */
+// }
+
 /* Animation pour afficher le contenu après 3 secondes */
 @keyframes showContent {
   100% {
     visibility: visible;
   }
 }
+
+
 @media (min-width: 768px) {
   footer {
     flex-direction: row-reverse;
@@ -157,11 +177,13 @@ footer .footer-list p {
     padding: 0 40px;
     padding-top: 20px;
   }
+
   footer h1 {
     margin: 0;
   }
+
   footer .footer-list {
     flex-direction: row;
     gap: 20px;
   }
-}/*# sourceMappingURL=main.css.map */
+}
